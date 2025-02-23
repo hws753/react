@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- Definisce la codifica dei caratteri come UTF-8, utile per supportare caratteri speciali -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Rende il sito responsive per i dispositivi mobili -->
+    <title>React with Babel</title> <!-- Titolo della pagina, visibile nella scheda del browser -->
+</head>
+
+<body>
+    <!-- Titolo principale della pagina -->
+    <h1>REACT & REACTDOM</h1>
+    <h2>JSX con Babel</h2> 
+
+    <!-- Div container dove React renderizzerà i componenti -->
+    <div id="root"></div>
+
+    <!-- Import delle librerie necessarie per React -->
+
+    <!-- React (versione di sviluppo) -->
+    <!-- Questa è la libreria principale di React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin defer></script>
+
+    <!-- ReactDOM (versione di sviluppo) -->
+    <!-- ReactDOM è necessario per manipolare il DOM in un'app React -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin defer></script>
+
+    <!-- Babel -->
+    <!-- Babel permette di scrivere JSX e convertirlo in JavaScript che il browser può capire -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
+
+    <!-- Import dello script JSX -->
+    <!-- Lo script principale che contiene il codice React -->
+    <!-- Il tipo "text/babel" indica che Babel deve compilare il codice JSX prima di eseguirlo -->
+    <script src="script.jsx" type="text/babel" defer></script>
+
+</body>
+
+</html>
+

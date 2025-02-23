@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Word</title>
+    <!-- Importazione delle librerie React e ReactDOM per il rendering dell'interfaccia utente -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <style>
+        /* Definizione della classe 'main' che sarà applicata a un div in React */
+        .main {
+            background-color: brown; /* Imposta il colore di sfondo marrone */
+            color: white; /* Imposta il colore del testo bianco */
+            border: 5px; /* Questa proprietà non avrà effetto, poiché manca il tipo di bordo (es. solid, dashed) */
+            border-radius: 10px; /* Angoli arrotondati di 10px */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>REACT & REACTDOM</h1>
+    <h2>Annidare Elementi</h2> 
+    <!-- Il div con id "root" fungerà da contenitore per l'applicazione React -->
+    <div id="root">
+        <!-- Questo codice HTML è stato commentato perché React gestisce direttamente il rendering -->
+        <!-- <h1 style="color:green" class="big">Hello Word</h1> -->
+    </div>
+
+    <script>
+        // Seleziona l'elemento HTML con id "root", che fungerà da contenitore dell'app React
+        const rootElement = document.getElementById('root');
+
+        // Crea un'istanza di ReactDOM root utilizzando React 18 (ReactDOM.createRoot)
+        const root = ReactDOM.createRoot(rootElement);
+
+        // Creazione di un elemento React <h1> utilizzando React.createElement()
+        const h1 = React.createElement(
+            'h1', // Tipo di elemento HTML da creare (tag <h1>)
+            {
+                key: "h1", // Attributo 'key' per aiutare React nell'aggiornamento efficiente del DOM virtuale
+                style: { 
+                    color: 'green', // Imposta il colore del testo su verde
+                    width: '200px', // Imposta la larghezza a 200px
+                },
+                className: 'big', // Imposta la classe CSS dell'elemento su "big"
+                onClick: ele => { console.log(ele.target) } // Assegna un gestore di eventi onClick che stampa in console l'elemento cliccato
+            },
+            'Hello World!' // Contenuto testuale del nodo <h1>
+        );
+
+        // Creazione di un elemento React <ul> (lista non ordinata)
+        const ul = React.createElement(
+            'ul', // Tipo di elemento HTML (ul)
+            {
+                className: 'list', // Assegna la classe 'list' all'elemento
+                key: 'ul' // Chiave unica per React
+            },
+            [
+                // Creazione dei singoli elementi <li> della lista
+                React.createElement('li', { key: 'php' }, 'PHP'), // Primo elemento della lista con testo 'PHP'
+                React.createElement('li', { key: 'javascript' }, 'JAVASCRIPT') // Secondo elemento della lista con testo 'JAVASCRIPT'
+            ]
+        );
+
+        // Creazione di un elemento <div> che conterrà l'h1 e la lista ul
+        const div = React.createElement(
+            'div', // Tipo di elemento HTML (div)
+            {
+                className: 'main' // Assegna la classe 'main' all'elemento (applicherà lo stile CSS definito)
+            }, 
+            [h1, ul] // Contenuto del div: il titolo <h1> e la lista <ul>
+        );
+
+        // Renderizza l'elemento <div> all'interno del nodo "root" del DOM
+        root.render(div);
+    </script>
+</body>
+
+</html>

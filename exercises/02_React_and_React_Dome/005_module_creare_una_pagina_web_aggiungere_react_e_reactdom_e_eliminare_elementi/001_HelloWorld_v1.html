@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React con CDN - Content Delivery Network</title>
+    <!-- Importazione delle librerie React e ReactDOM per il rendering dell'interfaccia utente -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+
+<body>
+    <h1>REACT & REACTDOM</h1>
+    <h2>Creare Elementi e Renderizzarli</h2>
+    <!-- Il div con id "root" fungerà da contenitore per l'applicazione React -->
+    <div id="root">
+        <!-- Questo codice HTML è stato commentato perché React gestisce direttamente il rendering -->
+        <!-- <h1 style="color:green" class="big">Hello Word</h1> -->
+    </div>
+
+    <script>
+        // Seleziona l'elemento HTML con id "root", che sarà il nodo principale dell'app React
+        const rootElement = document.getElementById('root');
+
+        // Crea un root per React utilizzando ReactDOM.createRoot(), metodo introdotto in React 18
+        const root = ReactDOM.createRoot(rootElement);
+
+        // Creazione di un elemento React <h1> utilizzando React.createElement()
+        const h1 = React.createElement(
+            'h1',  // Tipo di elemento HTML da creare (tag <h1>)
+            {
+                style: { // Definizione degli stili inline per l'elemento
+                    color: 'green', // Imposta il colore del testo su verde
+                    width: '200px', // Imposta la larghezza a 200px
+                },
+                className: 'big', // Imposta la classe CSS dell'elemento su "big"
+                onClick: ele => { console.log(ele.target) } // Aggiunge un gestore di eventi onClick che stampa l'elemento cliccato nella console
+            },
+            'Hello World!' // Contenuto testuale del nodo <h1>
+        );
+
+        // Renderizza il componente <h1> all'interno del nodo "root" del DOM
+        root.render(h1);
+    </script>
+</body>
+
+</html>
