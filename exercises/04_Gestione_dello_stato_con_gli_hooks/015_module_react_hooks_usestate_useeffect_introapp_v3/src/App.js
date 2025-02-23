@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Clock from './Clock.js';
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <h1>Clock App with React!</h1>
+      <Clock show country="ITALY" timezone="0" />
+      <Clock show country="SAO PAOLO" timezone="-4" />
+      <Clock show country="LOS ANGELES" timezone="-9" />
     </div>
   );
 }
