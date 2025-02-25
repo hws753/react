@@ -1,0 +1,145 @@
+/* 
+  Reset globale:
+  Elimina margin e padding di default per tutti gli elementi e 
+  imposta il box-sizing a border-box.
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 
+  Impostazioni per html e body:
+  Si estendono su tutta l'altezza e la larghezza della viewport.
+*/
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+/* 
+  Stile per il body:
+  Utilizza Flexbox per centrare il contenuto sia orizzontalmente che verticalmente.
+*/
+body{
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
+  Contenitore della "clock":
+  - height: 20vh => l'altezza è il 20% dell'altezza della viewport.
+  - font-size: 22vh e line-height: 20.4vh => dimensioni e spaziatura dei numeri, 
+  definite in viewport height.
+  - display: flex => per disporre i figli in linea.
+  - position: relative => per posizionare correttamente i pseudo-elementi.
+  - overflow: hidden => per nascondere eventuali elementi che escono dai limiti.
+*/
+.clock{
+    height: 20vh;
+    color: white;
+    font-size: 22vh;
+    font-family: sans-serif;
+    line-height: 20.4vh;
+    display: flex;
+    position: relative;
+    overflow: hidden; 
+}
+
+/* 
+  Pseudo-elementi ::before e ::after della .clock:
+  - Vengono usati per creare elementi decorativi (ad esempio, mascherature o 
+  gradienti sovrapposti).
+  - width: 7ch => la larghezza in base al numero di caratteri.
+  - height: 3vh => l'altezza in base all'altezza della viewport.
+  - background: un gradiente lineare verso l'alto per ::before (poi modificato per ::after).
+  - position: absolute e z-index: 2 => per posizionarli sopra il contenuto.
+*/
+.clock::before, .clock::after{
+    content: '';
+    width: 7ch;
+    height: 3vh;
+    background: linear-gradient(to top, transparent, black);
+    position: absolute;
+    z-index: 2;
+}
+
+/* 
+  Ulteriore personalizzazione dello pseudo-elemento ::after:
+  - bottom: 0 => posiziona l'elemento in basso.
+  - background: cambia la direzione del gradiente (verso il basso).
+*/
+.clock::after{
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent, black);
+}
+
+/* 
+  Stile per i figli immediati di .clock:
+  - Imposta ogni div contenuto in .clock come un contenitore Flex.
+*/
+.clock > div{
+    display: flex;
+}
+
+/* 
+  Stile per gli elementi con classe .tick:
+  - Regola il line-height per questi elementi (ad es. i due punti ":").
+*/
+.tick{
+    line-height: 17vh;
+}
+
+/* 
+  Stile per la classe .tick-hidden:
+  - Imposta l'opacità a 0 per rendere l'elemento trasparente.
+*/
+.tick-hidden{
+    opacity: 0;
+}
+
+/* 
+  Classe .move per applicare un'animazione:
+  - Applica l'animazione chiamata "move" della durata di 1 secondo e 
+  che si ripete all'infinito.
+*/
+.move{
+    animation: move linear 1s infinite; 
+
+}
+
+/* 
+  Definizione dell'animazione "move":
+  - L'animazione sposta l'elemento verticalmente da translateY(0vh) a translateY(-20vh).
+  La regola @keyframes move definisce un'animazione chiamata "move" che specifica come 
+  un elemento deve trasformarsi nel tempo. Ecco una spiegazione dettagliata:
+
+@keyframes move { ... }
+Questo blocco definisce l'animazione "move". All'interno si specificano i vari stati 
+(keyframe) che l'animazione attraverserà durante il suo ciclo.
+
+from { transform: translateY(0vh); }
+Il keyframe from rappresenta lo stato iniziale (equivalente al 0% dell'animazione). 
+Qui, la proprietà transform: translateY(0vh); indica che l'elemento parte senza 
+alcun spostamento verticale.
+
+to { transform: translateY(-20vh); }
+Il keyframe to rappresenta lo stato finale (equivalente al 100% dell'animazione). 
+Con transform: translateY(-20vh); l'elemento viene traslato verticalmente verso l'alto di 20%
+dell'altezza della viewport.
+
+Quindi, applicando questa animazione a un elemento (usando ad esempio la proprietà animation:
+move linear 1s infinite;), l'elemento si sposterà gradualmente dal punto iniziale 
+al punto finale, creando un movimento verticale fluido che va da 0 a -20vh.
+*/
+/* @keyframes move{
+    from{
+        transform: translateY(0vh);
+    }
+    to{
+        transform: translateY(-20vh);
+    }
+} */
