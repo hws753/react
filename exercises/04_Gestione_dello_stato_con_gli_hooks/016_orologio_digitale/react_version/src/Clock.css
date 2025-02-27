@@ -1,0 +1,119 @@
+/* 
+=========================
+🎯 STILE GENERALE DELL'OROLOGIO
+=========================
+- L'altezza è il 20% della viewport (20vh).
+- Il colore del testo è bianco.
+- Il font ha dimensioni pari a 22vh e una line-height leggermente inferiore per l'allineamento.
+- Utilizza `flexbox` per allineare gli elementi.
+- `overflow: hidden` impedisce che elementi fuoriuscano dai limiti del contenitore.
+*/
+
+.clock {
+  height: 20vh;
+  color: white;
+  font-size: 22vh;
+  font-family: sans-serif;
+  line-height: 20.4vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 
+=========================
+🖌 DECORAZIONI CON PSEUDO-ELEMENTI
+=========================
+- `::before` e `::after` creano un effetto sfumato sulla parte superiore e inferiore dell'orologio.
+- `width: 7ch` definisce la larghezza del gradiente rispetto al numero di caratteri.
+- `height: 3vh` imposta l'altezza del gradiente per coprire la parte superiore e inferiore.
+- `position: absolute` e `z-index: 2` posizionano gli elementi sopra il contenuto.
+*/
+
+.clock::before, 
+.clock::after {
+  content: '';
+  width: 7ch;
+  height: 3vh;
+  position: absolute;
+  z-index: 2;
+}
+
+/* Gradiente in alto */
+.clock::before {
+  background: linear-gradient(to top, transparent, black);
+}
+
+/* Gradiente in basso */
+.clock::after {
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, black);
+}
+
+/* 
+=========================
+🕒 ELEMENTI INTERNI DELL'OROLOGIO
+=========================
+- `display: flex;` permette di allineare gli elementi numerici orizzontalmente.
+*/
+
+.clock > div {
+  display: flex;
+}
+
+/* 
+=========================
+🔹 STILE DEI SEPARATORI ":" 
+=========================
+- I due punti ":" tra ore, minuti e secondi.
+- La line-height viene ridotta per evitare che sembrino spostati verticalmente.
+*/
+
+.tick {
+  line-height: 17vh;
+}
+
+/* 
+=========================
+💡 NASCONDERE ELEMENTI
+=========================
+- `.tick-hidden` rende trasparenti gli elementi che devono essere nascosti.
+*/
+
+.tick-hidden {
+  opacity: 0;
+}
+
+/* 
+=========================
+🔥 ANIMAZIONE DEI NUMERI
+=========================
+- Quando un numero cambia, viene applicata una leggera espansione per evidenziare il cambiamento.
+*/
+
+.animated {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1.2);
+}
+
+/* 
+=========================
+📌 MOVIMENTO VERTICALE (FACOLTATIVO)
+=========================
+- Se vuoi animare i numeri facendoli scorrere in alto, puoi riattivare l'animazione "move".
+*/
+
+
+.move {
+  animation: move 1s linear infinite;
+}
+
+@keyframes move {
+  from {
+      transform: translateY(0vh);
+  }
+  to {
+      transform: translateY(-20vh);
+  }
+}
+
